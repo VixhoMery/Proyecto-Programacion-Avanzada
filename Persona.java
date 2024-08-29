@@ -5,6 +5,16 @@ public class Persona {
     private String direccion;
     private int telefono;
 
+/*  Constructor
+    public Persona(String name, String rut, String mail, String address, int fono){
+        nombre = name;
+        this.rut = rut;
+        correo = mail;
+        direccion = address;
+        telefono = fono;
+    }
+*/
+
     //Setters
     public void setNombre(String name){
         nombre = name;
