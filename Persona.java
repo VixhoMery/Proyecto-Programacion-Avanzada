@@ -3,9 +3,15 @@ public class Persona {
     private String rut;
     private String correo;
     private String direccion;
-    
     private int telefono;
 
+    public Persona(String name, String rut, String mail, String address, int fono){
+        nombre = name;
+        this.rut = rut;
+        correo = mail;
+        direccion = address;
+        telefono = fono;
+    }
 
     //Setters
     public void setNombre(String name){
