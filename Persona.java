@@ -4,6 +4,9 @@ public class Persona {
     private String correo;
     private String direccion;
     
+    private int telefono;
+
+
     //Setters
     public void setNombre(String name){
         nombre = name;
@@ -17,6 +20,9 @@ public class Persona {
     public void setDireccion(String adress){
         direccion = adress;
     }
+    public void setTelefono(int fono){
+        telefono = fono;
+    }
     //Getters
     public String getNombre(){
         return nombre;
@@ -29,5 +35,8 @@ public class Persona {
     }
     public String getDireccion(){
         return direccion;
+    }
+    public int getTelefono(){
+        return telefono;
     }
 }
