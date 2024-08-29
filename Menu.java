@@ -1,7 +1,7 @@
-import java.util.Scanner;
+import java.util.*;
 public class Menu {
 
-    static Scanner leerDato= new Scanner (System.in);
+    static Scanner leerDato = new Scanner (System.in);
 
     public static void main(String arg[]){
 
@@ -44,10 +44,10 @@ public class Menu {
             System.out.println("======================");
             System.out.println("==Ingrese una Opción==");
             System.out.println("======================");
-            System.out.println("1) OPCION 1");
-            System.out.println("2) OPCION 2");
-            System.out.println("3) OPCION 3");
-            System.out.println("4) OPCION 4\n");
+            System.out.println("1) Registrar Cliente");
+            System.out.println("2) Diagnostico");
+            System.out.println("3) Fecha estimada de la entrega");
+            System.out.println("4) Ver stock\n");
             System.out.println("5) Salir del programa\n");
 
             opcion = leerDato.nextInt(); 
