@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 public class OrdenDeTrabajo {
     private Persona cliente;
     private String problema;
     private String diagnostico;
-    private ArrayList<OrdenDeTrabajo> piezasNecesarias = new ArrayList<>();
     private String fechaRecepcion;
     private String fechaEntregaEstimada;
+    
     //Setter
     public void setCliente(Persona cc){
         cliente = cc;
@@ -15,9 +14,6 @@ public class OrdenDeTrabajo {
     }
     public void setDiagnostico(String diag){
         diagnostico = diag;
-    }
-    public void setPiezasNecesarias(ArrayList<OrdenDeTrabajo> piezas){
-        piezasNecesarias = piezas;
     }
     public void setFechaRecepcion(String fechaR){
         fechaRecepcion = fechaR;
@@ -35,9 +31,6 @@ public class OrdenDeTrabajo {
     }
     public String getDiagnostico(){
         return diagnostico;
-    }
-    public ArrayList getPiezasNecesarias(){
-        return piezasNecesarias;
     }
     public String getFechaRecepcion(){
         return fechaRecepcion;
