@@ -3,7 +3,7 @@ public class Persona {
     private String rut;
     private String correo;
     private String direccion;
-    private int telefono;
+    private String telefono;
 
 /*  Constructor
     public Persona(String name, String rut, String mail, String address, int fono){
@@ -28,7 +28,7 @@ public class Persona {
     public void setDireccion(String adress){
         direccion = adress;
     }
-    public void setTelefono(int fono){
+    public void setTelefono(String fono){
         telefono = fono;
     }
     //Getters
@@ -44,7 +44,7 @@ public class Persona {
     public String getDireccion(){
         return direccion;
     }
-    public int getTelefono(){
+    public String getTelefono(){
         return telefono;
     }
 }

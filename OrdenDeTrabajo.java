@@ -1,10 +1,10 @@
+
 public class OrdenDeTrabajo {
     private Persona cliente;
     private String problema;
     private String diagnostico;
     private String fechaRecepcion;
     private String fechaEntregaEstimada;
-    
     //Setter
     public void setCliente(Persona cc){
         cliente = cc;
@@ -38,4 +38,6 @@ public class OrdenDeTrabajo {
     public String getFechaEntregaEstimada(){
         return fechaEntregaEstimada;
     }
+
+    
 }
