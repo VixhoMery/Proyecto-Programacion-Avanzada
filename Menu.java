@@ -34,11 +34,9 @@ public class Menu {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
-        
-       
 
-        int opcion ; 
 
+        int opcion; 
         do{
             //Menu de opciones
             System.out.println("======================");
@@ -51,22 +49,42 @@ public class Menu {
             System.out.println("5) Salir del programa\n");
 
             opcion = leerDato.nextInt(); 
-
+            leerDato.nextLine();
+            
             //Switch de casos posibles
             switch (opcion){
-
                 case 1:
-                    System.out.println("Seleccionaste la opcion 1");
-                    break;
+                    Persona cliente = new Persona();
+                    OrdenDeTrabajo orden = new OrdenDeTrabajo();
 
+                    System.out.println("Ingrese el nombre del cliente: ");
+                    String nombre = leerDato.nextLine();
+                    cliente.setNombre(nombre);
+
+                    System.out.println("Ingrese el rut del cliente: ");
+                    String rut = leerDato.nextLine();
+                    cliente.setRut(rut);
+
+                    System.out.println("Ingrese el correo del cliente: ");
+                    String correo = leerDato.nextLine();
+                    cliente.setCorreo(correo);
+
+                    System.out.println("Ingrese el Teléfono del cliente: ");
+                    String telefono = leerDato.nextLine();
+                    cliente.setTelefono(telefono);
+                    
+                    orden.setCliente(cliente);
+                    System.out.println("");
+
+                    break;
                 case 2:
                     System.out.println("Seleccionaste la opcion 2");
+                    
                     break;
-
                 case 3:
                     System.out.println("Seleccionaste la opcion 3");
                     break;
-                
+
                 case 4:
                     System.out.println("Seleccionaste la opcion 4");
                     break;
@@ -75,7 +93,6 @@ public class Menu {
                     break;    
                 }
             }while(opcion != 5);
-
             System.out.println("Hasta Luego!!!");
         }
     }
