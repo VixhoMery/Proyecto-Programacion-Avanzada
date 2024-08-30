@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class ServicioTecnico {
-    HashMap<String, Estante> estantes = new HashMap<>();
+    public HashMap<String, Estante> estantes = new HashMap<>();
 
     void agregarEstante(String tipoTrabajo) {
         estantes.put(tipoTrabajo, new Estante());

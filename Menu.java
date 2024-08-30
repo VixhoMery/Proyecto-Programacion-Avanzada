@@ -1,15 +1,7 @@
-<<<<<<< HEAD
-import java.util.*;
-public class Menu {
 
-    static Scanner leerDato = new Scanner (System.in);
-=======
 import java.util.Scanner;
 public class Menu {
-
     static Scanner leerDato= new Scanner (System.in);
->>>>>>> Vicente
-
     public static void main(String arg[]){
 
         System.out.println("              ======================");
@@ -41,50 +33,17 @@ public class Menu {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
-<<<<<<< HEAD
-        
-       
-
         int opcion ; 
 
-=======
-
-
-        int opcion; 
->>>>>>> Vicente
         do{
             //Menu de opciones
             System.out.println("======================");
             System.out.println("==Ingrese una Opción==");
             System.out.println("======================");
             System.out.println("1) Registrar Cliente");
-<<<<<<< HEAD
             System.out.println("2) Diagnostico");
             System.out.println("3) Fecha estimada de la entrega");
-            System.out.println("4) Ver stock\n");
-            System.out.println("5) Salir del programa\n");
-
-            opcion = leerDato.nextInt(); 
-
-            //Switch de casos posibles
-            switch (opcion){
-
-                case 1:
-                    System.out.println("Seleccionaste la opcion 1");
-                    break;
-
-                case 2:
-                    System.out.println("Seleccionaste la opcion 2");
-                    break;
-
-                case 3:
-                    System.out.println("Seleccionaste la opcion 3");
-                    break;
-                
-=======
-            System.out.println("2) OPCION 2");
-            System.out.println("3) OPCION 3");
-            System.out.println("4) OPCION 4\n");
+            System.out.println("4) Ver stock");
             System.out.println("5) Salir del programa\n");
 
             opcion = leerDato.nextInt(); 
@@ -132,7 +91,7 @@ public class Menu {
                     System.out.println("Seleccionaste la opcion 3");
                     break;
 
->>>>>>> Vicente
+
                 case 4:
                     System.out.println("Seleccionaste la opcion 4");
                     break;
@@ -140,14 +99,7 @@ public class Menu {
                 case 5:
                     break;    
                 }
-            }while(opcion != 5);
-<<<<<<< HEAD
-
+            } while(opcion != 5);
             System.out.println("Hasta Luego!!!");
         }
     }
-=======
-            System.out.println("Hasta Luego!!!");
-        }
-    }
->>>>>>> Vicente
