@@ -56,6 +56,7 @@ public class Menu {
                 case 1:
                     Persona cliente = new Persona();
                     OrdenDeTrabajo orden = new OrdenDeTrabajo();
+                    Diagnosticar problema = new Diagnosticar();
 
                     System.out.println("Ingrese el nombre del cliente: ");
                     String nombre = leerDato.nextLine();
@@ -74,7 +75,14 @@ public class Menu {
                     cliente.setTelefono(telefono);
                     
                     orden.setCliente(cliente);
-                    System.out.println("");
+                    System.out.println("Testimonio del Cliente: ");
+                    String testimonio = leerDato.nextLine();
+                    orden.setProblema(testimonio);
+                    
+                    System.out.println("Ingrese Diagnóstico: ");
+                    String diagnostico = leerDato.nextLine();
+                    orden.setDiagnostico(diagnostico);
+                    
 
                     break;
                 case 2:
