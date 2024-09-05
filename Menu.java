@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Menu {
     static Scanner leerDato= new Scanner (System.in);
     public static void main(String arg[]){
+        ServicioTecnico mapa = new ServicioTecnico();
 
         System.out.println("              ======================");
         System.out.println("              ===Servicio Tecnico===");
@@ -81,6 +82,7 @@ public class Menu {
                     String diagnostico = leerDato.nextLine();
                     orden.setDiagnostico(diagnostico);
                     
+                    problema.organizar(orden, mapa, diagnostico);
 
                     break;
                 case 2:

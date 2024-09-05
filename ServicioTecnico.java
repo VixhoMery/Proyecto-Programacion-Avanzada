@@ -3,11 +3,15 @@ import java.util.HashMap;
 public class ServicioTecnico {
     public HashMap<String, Estante> estantes = new HashMap<>();
 
-    void agregarEstante(String tipoTrabajo) {
-        estantes.put(tipoTrabajo, new Estante());
+    void agregarEstante(String diagnostico) {
+        estantes.put(diagnostico, new Estante());
     }
 
-    void agregarOrden(String tipoTrabajo, OrdenDeTrabajo orden) {
-        estantes.get(tipoTrabajo).agregarOrden(orden);
+    boolean estaClave(String clave){
+        return estantes.containsKey(clave);
+    }
+
+    Estante objeto(String diagnostico){
+        return estantes.get(diagnostico);
     }
 }

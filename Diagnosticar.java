@@ -1,18 +1,20 @@
 public class Diagnosticar {
-    private String diagnostico;
-    private OrdenDeTrabajo orden;
-    
+    /*Recibe una orden de trabajo del menú, esta clase recibe el mapa con estantes.
+     * Dentro del método organizar se verifica si el estante está en el mapa, si está
+     * se agrega la orden de trabajo a la lista correspondiente, si no está se crea.
+     */
+    private Estante estante = new Estante();
 
-    public void organizar(OrdenDeTrabajo )
+    public void organizar(OrdenDeTrabajo orden, ServicioTecnico mapa, String diagnostico){
+        if(mapa.estaClave(diagnostico)){
+            estante  = mapa.objeto(diagnostico);
+            estante.agregarOrden(orden);
+        }
 
-
-
-
-    public void setDiagnostico(String diagnostic){
-        diagnostico = diagnostic;
-    }
-    
-    public String getDiagnostico(){
-        return diagnostico;
+        else{
+            // Estante nuevoEstante = new Estante();
+            mapa.agregarEstante(diagnostico);
+        }
+        
     }
 }
