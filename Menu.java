@@ -1,107 +1,43 @@
 
 import java.util.Scanner;
+import java.io.IOException;
 public class Menu {
-    static Scanner leerDato= new Scanner (System.in);
-    public static void main(String arg[]){
-        ServicioTecnico mapa = new ServicioTecnico();
+    static Scanner leerDato = new Scanner(System.in);
+    static ServicioTecnico mapa = new ServicioTecnico(); // Asegúrate de que esta clase esté definida
 
-        System.out.println("              ======================");
-        System.out.println("              ===Servicio Tecnico===");
-        System.out.println("              ======================");
-        System.out.println("                     █████████");
-        System.out.println("  ███████          ███▒▒▒▒▒▒▒▒███");
-        System.out.println("  █▒▒▒▒▒▒█       ███▒▒▒▒▒▒▒▒▒▒▒▒▒███");
-        System.out.println("   █▒▒▒▒▒▒█    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██");
-        System.out.println("    █▒▒▒▒▒█   ██▒▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒▒███");
-        System.out.println("     █▒▒▒█   █▒▒▒▒▒▒████▒▒▒▒████▒▒▒▒▒▒██");
-        System.out.println("   █████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██");
-        System.out.println("   █▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒██");
-        System.out.println(" ██▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒██");
-        System.out.println("██▒▒▒███████████▒▒▒▒▒██▒▒▒▒▒▒▒▒██▒▒▒▒▒██");
-        System.out.println("█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒████████▒▒▒▒▒▒▒██");
-        System.out.println("██▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██");
-        System.out.println(" █▒▒▒███████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██");
-        System.out.println(" ██▒▒▒▒▒▒▒▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█");
-        System.out.println("  ████████████   █████████████████\n");
+    public static void main(String[] args) {
+        MostrarBanner.mostrarBanner();
+        int opcion;
 
-        //Limpiar pantalla.
-        try {
-            Thread.sleep(4000);  // Pausa de 4 segundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // Imprimir 50 líneas en blanco
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
-        int opcion ; 
-
-        do{
-            //Menu de opciones
-            System.out.println("======================");
-            System.out.println("==Ingrese una Opción==");
-            System.out.println("======================");
-            System.out.println("1) Registrar Cliente");
-            System.out.println("2) Diagnostico");
-            System.out.println("3) Fecha estimada de la entrega");
-            System.out.println("4) Ver stock");
-            System.out.println("5) Salir del programa\n");
-
-            opcion = leerDato.nextInt(); 
+        do {
+            MostrarMenu.mostrarMenu();
+            opcion = leerDato.nextInt();
             leerDato.nextLine();
-            
-            //Switch de casos posibles
-            switch (opcion){
+
+            switch (opcion) {
                 case 1:
-                    Persona cliente = new Persona();
-                    OrdenDeTrabajo orden = new OrdenDeTrabajo();
-                    Diagnosticar problema = new Diagnosticar();
-
-                    System.out.println("Ingrese el nombre del cliente: ");
-                    String nombre = leerDato.nextLine();
-                    cliente.setNombre(nombre);
-
-                    System.out.println("Ingrese el rut del cliente: ");
-                    String rut = leerDato.nextLine();
-                    cliente.setRut(rut);
-
-                    System.out.println("Ingrese el correo del cliente: ");
-                    String correo = leerDato.nextLine();
-                    cliente.setCorreo(correo);
-
-                    System.out.println("Ingrese el Teléfono del cliente: ");
-                    String telefono = leerDato.nextLine();
-                    cliente.setTelefono(telefono);
-                    
-                    orden.setCliente(cliente);
-                    System.out.println("Testimonio del Cliente: ");
-                    String testimonio = leerDato.nextLine();
-                    orden.setProblema(testimonio);
-                    
-                    System.out.println("Ingrese Diagnóstico: ");
-                    String diagnostico = leerDato.nextLine();
-                    orden.setDiagnostico(diagnostico);
-                    
-                    problema.organizar(orden, mapa, diagnostico);
-
+                    RegistrarCliente.registrarCliente(mapa);
                     break;
                 case 2:
-                    System.out.println("Seleccionaste la opcion 2");
-                    
+                    //realizarDiagnostico();
                     break;
                 case 3:
-                    System.out.println("Seleccionaste la opcion 3");
+                    //mostrarFechaEstimacion();
                     break;
-
-
                 case 4:
-                    System.out.println("Seleccionaste la opcion 4");
+                    //verStock();
                     break;
-                
                 case 5:
-                    break;    
-                }
-            } while(opcion != 5);
-            System.out.println("Hasta Luego!!!");
-        }
+                    System.out.println("Hasta Luego!!!");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        } while (opcion != 5);
     }
+    
+    public static void esperarTeclaParaVolverAlMenu() throws IOException {
+        System.out.println("Presiona cualquier tecla para volver al menú...");
+        System.in.read();  // Lee un carácter del teclado
+    }
+}
