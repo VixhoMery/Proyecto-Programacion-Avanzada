@@ -28,7 +28,7 @@ public class Menu {
                     //verStock();
                     break;
                 case 5:
-                    System.out.println("Hasta Luego!!!");
+                    System.out.println("Adios!!!");
                     break;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
@@ -40,4 +40,5 @@ public class Menu {
         System.out.println("Presiona cualquier tecla para volver al menú...");
         System.in.read();  // Lee un carácter del teclado
     }
+    
 }
