@@ -13,20 +13,21 @@ public class VerStock {
         stock.put("ratones", 4);
     }
 
-    // Método verStock que recibe un Scanner como parámetro
-    public void verStock(Scanner scanner) {
-        System.out.print("Ingrese el nombre del ítem que desea consultar: ");
-        String item = scanner.nextLine().toLowerCase();
+    public void verStock() {
+        try (Scanner scanner = new Scanner(System.in)) { 
+            System.out.print("Ingrese el nombre del ítem que desea consultar: ");
+            String item = scanner.nextLine().toLowerCase();
 
-        if (stock.containsKey(item)) {
-            int cantidad = stock.get(item);
-            if (cantidad > 0) {
-                System.out.println("Quedan " + cantidad + " " + item + " en stock.");
+            if (stock.containsKey(item)) {
+                int cantidad = stock.get(item);
+                if (cantidad > 0) {
+                    System.out.println("Quedan " + cantidad + " " + item + " en stock.");
+                } else {
+                    System.out.println("El ítem " + item + " está agotado.");
+                }
             } else {
-                System.out.println("El ítem " + item + " está agotado.");
+                System.out.println("No trabajamos con la pieza " + item + ".");
             }
-        } else {
-            System.out.println("No trabajamos con la pieza " + item + ".");
-        }
+        } 
     }
 }
