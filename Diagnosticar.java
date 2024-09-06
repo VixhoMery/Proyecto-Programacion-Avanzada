@@ -10,11 +10,12 @@ public class Diagnosticar {
             estante  = mapa.objeto(diagnostico);
             estante.agregarOrden(orden);
         }
-
         else{
             // Estante nuevoEstante = new Estante();
             mapa.agregarEstante(diagnostico);
         }
         
     }
+
+
 }

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 /*Cada estante está relacionado al problema, es decir, a cada
-*  departamento especializado por el tipo de problema*/
+*  departamento especializado por el tipo de problema
+Por ahora no se está usando especialización*/
 
 public class Estante {
     private String especializacion;
