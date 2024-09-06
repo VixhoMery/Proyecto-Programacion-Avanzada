@@ -4,10 +4,9 @@ public class Menu {
     static Scanner leerDato = new Scanner(System.in);
     static ServicioTecnico mapa = new ServicioTecnico();
 
-
-
     public static void main(String[] args) {
         MostrarBanner.mostrarBanner();
+        VerStock verStock = new VerStock();
         int opcion;
 
         do {
@@ -29,7 +28,7 @@ public class Menu {
                     esperarEnterParaVolverAlMenu();  
                     break;
                 case 4:
-                    //verStock();
+                    verStock.verStock();
                     esperarEnterParaVolverAlMenu();  
                     break;
                 case 5:
