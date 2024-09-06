@@ -1,9 +1,10 @@
 
 import java.util.Scanner;
-import java.io.IOException;
 public class Menu {
     static Scanner leerDato = new Scanner(System.in);
     static ServicioTecnico mapa = new ServicioTecnico();
+
+
 
     public static void main(String[] args) {
         MostrarBanner.mostrarBanner();
@@ -17,15 +18,19 @@ public class Menu {
             switch (opcion) {
                 case 1:
                     RegistrarCliente.registrarCliente(mapa);
-                    break;
+                    esperarEnterParaVolverAlMenu();  
+                break;
                 case 2:
                     //realizarDiagnostico();
+                    esperarEnterParaVolverAlMenu();  
                     break;
                 case 3:
                     //mostrarFechaEstimacion();
+                    esperarEnterParaVolverAlMenu();  
                     break;
                 case 4:
                     //verStock();
+                    esperarEnterParaVolverAlMenu();  
                     break;
                 case 5:
                     System.out.println("Adios!!!");
@@ -35,10 +40,10 @@ public class Menu {
             }
         } while (opcion != 5);
     }
-    
-    public static void esperarTeclaParaVolverAlMenu() throws IOException {
-        System.out.println("Presiona cualquier tecla para volver al menú...");
-        System.in.read();  // Lee un carácter del teclado
+
+    public static void esperarEnterParaVolverAlMenu() {
+        System.out.println("Presiona Enter para volver al menú...");
+        leerDato.nextLine();  // Espera a que el usuario presione Enter
     }
-    
 }
+
