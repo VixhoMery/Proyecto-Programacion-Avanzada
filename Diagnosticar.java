@@ -4,7 +4,6 @@ public class Diagnosticar {
      * se agrega la orden de trabajo a la lista correspondiente, si no está se crea.
      */
     private Estante estante = new Estante();
-
     public void organizar(OrdenDeTrabajo orden, ServicioTecnico mapa, String diagnostico){
         if(mapa.estaClave(diagnostico)){
             estante  = mapa.objeto(diagnostico);
@@ -14,8 +13,5 @@ public class Diagnosticar {
             // Estante nuevoEstante = new Estante();
             mapa.agregarEstante(diagnostico);
         }
-        
     }
-
-
 }
