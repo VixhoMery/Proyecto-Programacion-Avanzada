@@ -46,4 +46,3 @@ public class Menu {
         leerDato.nextLine();  // Espera a que el usuario presione Enter
     }
 }
-
