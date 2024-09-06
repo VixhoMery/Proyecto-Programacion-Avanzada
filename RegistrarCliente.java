@@ -36,5 +36,6 @@ public class RegistrarCliente {
         
 
         problema.organizar(orden, mapa, diagnostico);
+        System.out.println("El cliente se registró con exito!!!");
     }
 }
