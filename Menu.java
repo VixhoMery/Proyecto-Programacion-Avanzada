@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.io.IOException;
 public class Menu {
     static Scanner leerDato = new Scanner(System.in);
-    static ServicioTecnico mapa = new ServicioTecnico(); // Asegúrate de que esta clase esté definida
+    static ServicioTecnico mapa = new ServicioTecnico();
 
     public static void main(String[] args) {
         MostrarBanner.mostrarBanner();

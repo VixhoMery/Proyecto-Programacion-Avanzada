@@ -3,8 +3,8 @@ import java.util.HashMap;
 public class ServicioTecnico {
     public HashMap<String, Estante> estantes = new HashMap<>();
 
-    void agregarEstante(String diagnostico) {
-        estantes.put(diagnostico, new Estante());
+    void agregarEstante(String diagnostico, Estante estante) {
+        estantes.put(diagnostico, estante);
     }
 
     boolean estaClave(String clave){

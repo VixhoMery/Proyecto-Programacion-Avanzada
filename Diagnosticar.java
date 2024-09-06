@@ -10,8 +10,10 @@ public class Diagnosticar {
             estante.agregarOrden(orden);
         }
         else{
-            // Estante nuevoEstante = new Estante();
-            mapa.agregarEstante(diagnostico);
+            Estante nuevoEstante = new Estante();
+            nuevoEstante.setEspecialización(diagnostico);
+            mapa.agregarEstante(diagnostico, nuevoEstante);
+
         }
     }
 }

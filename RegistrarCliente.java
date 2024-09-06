@@ -24,6 +24,7 @@ public class RegistrarCliente {
         String telefono = leerDato.nextLine();
         cliente.setTelefono(telefono);
 
+        //Actualización orden del cliente
         orden.setCliente(cliente);
         System.out.println("Testimonio del Cliente: ");
         String testimonio = leerDato.nextLine();
