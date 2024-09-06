@@ -21,12 +21,12 @@ public class MostrarBanner {
 
         // Limpiar pantalla
         try {
-            Thread.sleep(4000);  // Pausa de 4 segundos
+            Thread.sleep(2000);  // Pausa de 2 segundos
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Imprimir 50 líneas en blanco
-        for (int i = 0; i < 50; i++) {
+        // Imprimir 80 líneas en blanco
+        for (int i = 0; i < 80; i++) {
             System.out.println();
         }
     }
