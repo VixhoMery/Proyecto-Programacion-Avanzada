@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LeerCSV {
 
-    public void leerArchivo(ServicioTecnico mapa) {
+    public void leerArchivo(MapaDiagnostico mapa) {
         // Ruta relativa al archivo CSV desde el directorio raíz del proyecto
         String rutaRelativa = "./datosClientes.csv";
 
@@ -14,6 +14,7 @@ public class LeerCSV {
             while (scanner.hasNextLine()) {
                 String linea = scanner.nextLine();
                 String[] campos = linea.replace("\"", "").split(",");
+                
                 Persona cliente = new Persona();
                 OrdenDeTrabajo orden = new OrdenDeTrabajo();
                 Diagnosticar diag = new Diagnosticar();
@@ -27,6 +28,8 @@ public class LeerCSV {
                 orden.setCliente(cliente);
                 orden.setDiagnostico(campos[5]);
                 diag.organizar(orden, mapa, orden.getDiagnostico());
+                orden.setFechaEntregaEstimada(diag.calcularFecha(campos[5]));
+                
                 
 
                 System.out.println(cliente.getNombre());
@@ -34,6 +37,8 @@ public class LeerCSV {
                 System.out.println(cliente.getCorreo());
                 System.out.println(cliente.getDireccion());
                 System.out.println(cliente.getTelefono());
+                System.out.println(orden.getDiagnostico());
+                System.out.println(orden.getFechaEntregaEstimada());
                 System.out.println(" ");
             }
             scanner.close();
@@ -41,21 +46,11 @@ public class LeerCSV {
             System.out.println("Archivo no encontrado: " + e.getMessage());
         }
     }
+    
+    public void mostrarMapa(MapaDiagnostico mapa){
+        String diag = "Reparación de teclado";
+        ListaOrdenes lista = new ListaOrdenes();
+        lista = mapa.objeto(diag);
+        lista.mostrar();
+    }
 }
-
-// public static void main(String[] args) {
-//     String rutaArchivo = "data/archivo.csv"; // Ruta relativa a la carpeta "data"
-//     try (Scanner scanner = new Scanner(new File(rutaArchivo))) {
-//         while (scanner.hasNextLine()) {
-//             String linea = scanner.nextLine();
-//             // Procesar la línea
-//             String[] campos = linea.split(",");
-//             for (String campo : campos) {
-//                 System.out.print(campo + " | ");
-//             }
-//             System.out.println();
-//         }
-//     } catch (FileNotFoundException e) {
-//         e.printStackTrace();
-//     }
-    // }
