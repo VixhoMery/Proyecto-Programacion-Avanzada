@@ -24,8 +24,8 @@ public class Menu {
                 case 1 -> {
                     csv.leerArchivo(mapa);
                     csv.mostrarMapa(mapa);
-                    RegistrarCliente.registrarCliente(mapa);  // Registrar cliente
-                    System.out.println("El cliente se registró con éxito!!!");
+                    RegistrarCliente.registrarCliente(mapa,csv);  // Registrar cliente
+                    //System.out.println("El cliente se registró con éxito!!!");
                     esperarEnterParaVolverAlMenu();  // Esperar antes de volver al menú
                 }
                 case 2 -> // Realizar diagnóstico (pendiente de implementar)
