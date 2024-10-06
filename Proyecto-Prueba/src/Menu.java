@@ -7,7 +7,9 @@ public class Menu {
     public static void main(String[] args) {
         MostrarBanner.mostrarBanner();  // Mostrar banner al iniciar
         LeerCSV csv = new LeerCSV();
+        String rutaCSV = "./datosClientes.csv";
         VerStock verStock = new VerStock(); // Instancia de VerStock
+        GestionarClientes gestionCliente = new GestionarClientes();
 
         int opcion;
 
@@ -24,12 +26,15 @@ public class Menu {
                 case 1 -> {
                     csv.leerArchivo(mapa);
                     csv.mostrarMapa(mapa);
-                    RegistrarCliente.registrarCliente(mapa,csv);  // Registrar cliente
+                    gestionCliente.registrarCliente(mapa,csv,rutaCSV);  // Registrar cliente
                     //System.out.println("El cliente se registró con éxito!!!");
                     esperarEnterParaVolverAlMenu();  // Esperar antes de volver al menú
                 }
-                case 2 -> // Realizar diagnóstico (pendiente de implementar)
+                case 2 ->{
+                    // eliminar (pendiente de implementar)
+                    gestionCliente.eliminarCliente(mapa, csv, rutaCSV);
                     esperarEnterParaVolverAlMenu();
+                }
                 case 3 -> // Mostrar fecha estimada (pendiente de implementar)
                     esperarEnterParaVolverAlMenu();
                 case 4 -> {

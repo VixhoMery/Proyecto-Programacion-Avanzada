@@ -3,21 +3,26 @@ public class Diagnosticar {
      * Dentro del método organizar se verifica si el estante está en el mapa, si está
      * se agrega la orden de trabajo a la lista correspondiente, si no está se crea.
      */
-    private Estante estante = new Estante();
-    public void organizar(OrdenDeTrabajo orden, ServicioTecnico mapa, String diagnostico){
+    private ListaOrdenes lista = new ListaOrdenes();
+    public void organizar(OrdenDeTrabajo orden, MapaDiagnostico mapa, String diagnostico){
         if(mapa.estaClave(diagnostico)){
-            estante  = mapa.objeto(diagnostico);
-            estante.agregarOrden(orden);
+            lista  = mapa.objeto(diagnostico);
+            lista.agregarOrden(orden);
         }
         else{
-            Estante nuevoEstante = new Estante();
+            ListaOrdenes nuevoEstante = new ListaOrdenes();
             nuevoEstante.setEspecialización(diagnostico);
             mapa.agregarEstante(diagnostico, nuevoEstante);
 
         }
     }
     
-    public void calcularFecha(OrdenDeTrabajo orden){
-        
+    public String calcularFecha(String diagnostico){
+        if(diagnostico.length()>= 18){
+            return "14 días";
+        }
+        else{
+            return "7 días";
+        }
     }
 }
