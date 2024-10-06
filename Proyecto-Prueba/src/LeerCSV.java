@@ -1,10 +1,14 @@
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -69,6 +73,7 @@ public class LeerCSV {
     try(FileWriter fw = new FileWriter(archivo, true);  // true habilita el modo "append"
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter pw = new PrintWriter(bw);  )
+         
     {
         // Construir la línea CSV con los getters y agregar comillas dobles
         StringBuilder sb = new StringBuilder();
@@ -94,4 +99,36 @@ public class LeerCSV {
             e.printStackTrace();
         }
     }
+    
+   
+    
+    public void eliminarLinea(String rutaArchivo, String nombreEliminar) {
+        File archivoCSV = new File(rutaArchivo);
+        List<String> lineasRestantes = new ArrayList<>();
+
+        // Leer el archivo y almacenar las líneas que no queremos eliminar
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] campos = linea.split(",");  // Dividir por comas
+                if (!campos[0].trim().equals(nombreEliminar)) {  // El segundo campo es el rut
+                    lineasRestantes.add(linea);  // Si no es el rut que queremos eliminar, la mantenemos
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Sobrescribir el archivo con las líneas que no fueron eliminadas
+        try (PrintWriter pw = new PrintWriter(new FileWriter(archivoCSV))) {
+            for (String linea : lineasRestantes) {
+                pw.println(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
+    
