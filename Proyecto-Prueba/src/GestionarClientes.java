@@ -24,15 +24,12 @@ public class GestionarClientes {
         String telefono = leerDato.nextLine();
         cliente.setTelefono(telefono);
         
-        System.out.println("Ingrese la Dirección del cliente: ");
+        //System.out.println("Ingrese la Dirección del cliente: ");
         String direccion = "direccion genérica"; //temporal
         cliente.setDireccion(direccion);
 
         //Actualización orden del cliente
         orden.setCliente(cliente);
-        //System.out.println("Testimonio del Cliente: ");
-        //String testimonio = leerDato.nextLine();
-        //orden.setProblema(testimonio);
 
         System.out.println("Ingrese Diagnóstico: ");
         String diagnostico = leerDato.nextLine();
@@ -106,7 +103,7 @@ public class GestionarClientes {
             for(int i = 0; i < lista.largo();i++){
                 if(lista.nombresIguales(nombre, i)){
                     lista.eliminarODT(i);
-                    csv.eliminarLinea(rutaCSV, nombre);
+                    //csv.eliminarLinea(rutaCSV, nombre);
                     System.out.println("El cliente y su orden de trabajo han sido eliminados exitosamente!!");
                     break;
                 }
@@ -116,7 +113,104 @@ public class GestionarClientes {
         }
     }
     
-    public void editarDato(){
+    public void editarDato(int dato,MapaDiagnostico mapa, OrdenDeTrabajo orden){
+        String datoIngresado;
+        Diagnosticar d = new Diagnosticar();
         
-    }
+        if(dato == 1){ //nombre
+            Persona p = orden.getCliente();
+            datoIngresado = p.getNombre();
+            System.out.println("Dato del Cliente: " + datoIngresado);
+            System.out.println("¿Cambiar dato del cliente?");
+            System.out.println("Confirmar(y/n): ");
+            String confirmacion = leerDato.nextLine();
+            if(confirmacion.equals(confirmacion)){
+                System.out.println("Ingrese Nuevo Dato: ");
+                datoIngresado = leerDato.nextLine();
+                p.setNombre(datoIngresado);
+            }
+            else {return;} 
+        }
+        
+        if (dato == 2){ //rut
+            Persona p = orden.getCliente();
+            datoIngresado = p.getRut();
+            System.out.println("Dato del Cliente: " + datoIngresado);
+            System.out.println("¿Cambiar dato del cliente?");
+            System.out.println("Confirmar(y/n): ");
+            String confirmacion = leerDato.nextLine();
+            if(confirmacion.equals(confirmacion)){
+                System.out.println("Ingrese Nuevo Dato: ");
+                datoIngresado = leerDato.nextLine();
+                p.setRut(datoIngresado);
+            }
+            else {return;}  
+        }
+        
+        if(dato == 3 ){
+            Persona p = orden.getCliente();
+            datoIngresado = p.getCorreo();
+            System.out.println("Dato del Cliente: " + datoIngresado);
+            System.out.println("¿Cambiar dato del cliente?");
+            System.out.println("Confirmar(y/n): ");
+            String confirmacion = leerDato.nextLine();
+            if (confirmacion.equals(confirmacion)) {
+                System.out.println("Ingrese Nuevo Dato: ");
+                datoIngresado = leerDato.nextLine();
+                p.setCorreo(datoIngresado);
+            } else {
+                return;
+            }
+        }
+        
+        if(dato == 4){
+            Persona p = orden.getCliente();
+            datoIngresado = p.getDireccion();
+            System.out.println("Dato del Cliente: " + datoIngresado);
+            System.out.println("¿Cambiar dato del cliente?");
+            System.out.println("Confirmar(y/n): ");
+            String confirmacion = leerDato.nextLine();
+            
+            if (confirmacion.equals(confirmacion)) {
+                System.out.println("Ingrese Nuevo Dato: ");
+                datoIngresado = leerDato.nextLine();
+                p.setDireccion(datoIngresado);
+            } else {
+                return;
+            }
+            
+        }
+        
+        if(dato == 5){
+            Persona p = orden.getCliente();
+            datoIngresado = p.getTelefono();
+            System.out.println("Dato del Cliente: " + datoIngresado);
+            System.out.println("¿Cambiar dato del cliente?");
+            System.out.println("Confirmar(y/n): ");
+            String confirmacion = leerDato.nextLine();
+            if (confirmacion.equals(confirmacion)) {
+                System.out.println("Ingrese Nuevo Dato: ");
+                datoIngresado = leerDato.nextLine();
+                p.setTelefono(datoIngresado);
+            } else {
+                return;
+            }
+        }
+        
+        if(dato == 6){
+            String datoActual = orden.getDiagnostico();
+            System.out.println("Dato del Cliente: " + datoActual);
+            System.out.println("¿Cambiar dato del cliente?");
+            System.out.println("Confirmar(y/n): ");
+            String confirmacion = leerDato.nextLine();
+            if (confirmacion.equals(confirmacion)) {
+                System.out.println("Ingrese Nuevo Dato: ");
+                datoIngresado = leerDato.nextLine();
+                orden.setDiagnostico(datoIngresado);
+                d.organizar(orden, mapa, datoIngresado);
+            } else {
+                return;
+            }
+        }
+    }    
 }

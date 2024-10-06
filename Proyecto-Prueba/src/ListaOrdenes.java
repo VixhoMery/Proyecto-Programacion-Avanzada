@@ -34,6 +34,10 @@ public class ListaOrdenes {
             OrdenDeTrabajo orden = ordenes.get(i);
             Persona p = orden.getCliente();
             System.out.println("Nombre Cliente: "+p.getNombre());
+            System.out.println("Rut: "+p.getRut());
+            System.out.println("Correo: "+p.getCorreo());
+            System.out.println("Direccion: "+p.getDireccion());
+            System.out.println("Teléfono: "+p.getTelefono());
             System.out.println("Diagnóstico Asociado: "+orden.getDiagnostico());
             System.out.println(" ");
         }

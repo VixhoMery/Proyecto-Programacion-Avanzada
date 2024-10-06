@@ -20,7 +20,7 @@ public class LeerCSV {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter(nombreArchivo))) {
             System.out.println("Archivo creado exitosamente.");
             nombreArchivo = "archivo.csv";
-            rutaTemporal = "./archivo.csv";
+            rutaTemporal = ".//archivo.csv";
         } catch (IOException e) {
             System.err.println("Error al crear el archivo: " + e.getMessage());
             nombreArchivo = null;
@@ -37,7 +37,7 @@ public class LeerCSV {
         }
         
         // Ruta relativa al archivo CSV desde el directorio raíz del proyecto
-        String rutaRelativa = "./datosClientes.csv";
+        String rutaRelativa = ".//datosClientes.csv";
 
         try (Scanner scanner = new Scanner(new File(rutaRelativa))) {
 
