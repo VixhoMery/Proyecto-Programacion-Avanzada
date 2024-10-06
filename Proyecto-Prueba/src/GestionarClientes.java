@@ -42,39 +42,55 @@ public class GestionarClientes {
         
         csv.agregarDatosCsv(rutaCSV,orden);
     }
-    
-    public Persona buscarCliente(MapaDiagnostico mapa){
+    /*
+    public void buscar(MapaDiagnostico mapa){
         System.out.println("Ingresar Diagnóstico: ");
         String diagnostico = leerDato.nextLine();
         if(!mapa.estaClave(diagnostico)){
             System.out.println("Diagnostico no encontrado."); //después hacer con try-catch
-            return null;
         }
         
         else{
             System.out.println("Ingrese el nombre del cliente con formato ^Nombre Apellido^: ");
             String nombre = leerDato.nextLine();
             ListaOrdenes lista = mapa.objeto(diagnostico);
-            
+            //lista.mostrarLista();
+           
             for(int i = 0; i < lista.largo();i++){
-                if(lista.estaNombre(nombre, i)){
-                    OrdenDeTrabajo odt = lista.getODT(i);
-                    Persona clienteActual = odt.getCliente();
-                    return clienteActual;
+                if(lista.nombresIguales(nombre, i)){
+                    System.out.println("El cliente y su orden de trabajo han sido eliminados exitosamente!!");
+                    break;
                 }
             }
-        
+            System.out.println(" ");
+            lista.mostrarLista();
         }
+    }    
+    */
+    public OrdenDeTrabajo buscar(MapaDiagnostico mapa){
+        System.out.println("Ingresar Diagnóstico: ");
+        String diagnostico = leerDato.nextLine();
+        if(!mapa.estaClave(diagnostico)){
+            System.out.println("Diagnostico no encontrado."); //después hacer con try-catch
+        }
+        
+        else{
+            System.out.println("Ingrese el nombre del cliente con formato ^Nombre Apellido^: ");
+            String nombre = leerDato.nextLine();
+            ListaOrdenes lista = mapa.objeto(diagnostico);
+            //lista.mostrarLista();
+           
+            for(int i = 0; i < lista.largo();i++){
+                if(lista.nombresIguales(nombre, i)){
+                    OrdenDeTrabajo orden = lista.getODT(i);
+                    return orden;
+                }
+            }
+        }        
         return null;
     }
     
     public void eliminarCliente(MapaDiagnostico mapa, LeerCSV csv, String rutaCSV){
-        /*
-        System.out.println("Ingrese el nombre del cliente que desa eliminar con formato:  ^Nombre Apellido^ ");
-        String nombre = leerDato.nextLine();
-        
-        */
-        
         System.out.println("Ingresar Diagnóstico: ");
         String diagnostico = leerDato.nextLine();
         if(!mapa.estaClave(diagnostico)){
@@ -85,21 +101,22 @@ public class GestionarClientes {
             System.out.println("Ingrese el nombre del cliente con formato ^Nombre Apellido^: ");
             String nombre = leerDato.nextLine();
             ListaOrdenes lista = mapa.objeto(diagnostico);
-            
+            lista.mostrarLista();
             
             for(int i = 0; i < lista.largo();i++){
-                if(lista.estaNombre(nombre, i)){
-                    OrdenDeTrabajo odt = lista.getODT(i);
+                if(lista.nombresIguales(nombre, i)){
                     lista.eliminarODT(i);
                     csv.eliminarLinea(rutaCSV, nombre);
                     System.out.println("El cliente y su orden de trabajo han sido eliminados exitosamente!!");
                     break;
                 }
-                
-                else{
-                    System.out.println("Nombre no encontrado!!");
-                }
             }
+            System.out.println(" ");
+            lista.mostrarLista();
         }
+    }
+    
+    public void editarDato(){
+        
     }
 }

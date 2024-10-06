@@ -22,13 +22,21 @@ public class ListaOrdenes {
         return largo;
     }
     
-    public boolean estaNombre(String nombre, int i){
+    public boolean nombresIguales(String nombre, int i){
         OrdenDeTrabajo ordenActual = ordenes.get(i);
         Persona p = ordenActual.getCliente();
-        if (!p.getNombre().equals(nombre)){
-            return false;
+        String name = p.getNombre();
+        return name.equals(nombre);
+    }
+    
+    public void mostrarLista(){
+        for (int i = 0; i < ordenes.size(); i++) {
+            OrdenDeTrabajo orden = ordenes.get(i);
+            Persona p = orden.getCliente();
+            System.out.println("Nombre Cliente: "+p.getNombre());
+            System.out.println("Diagnóstico Asociado: "+orden.getDiagnostico());
+            System.out.println(" ");
         }
-        return true;
     }
     
     public void eliminarODT(int posicion){

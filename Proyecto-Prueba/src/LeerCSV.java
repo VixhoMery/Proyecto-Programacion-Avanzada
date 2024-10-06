@@ -86,7 +86,7 @@ public class LeerCSV {
         //sb.append("\"").append(orden.getProblema()).append("\",");
         sb.append("\"").append(orden.getDiagnostico()).append("\",");
         //sb.append("\"").append(orden.getFechaRecepcion()).append("\",");
-        sb.append("\"").append(orden.getFechaEntregaEstimada()).append("\"");
+        //sb.append("\"").append(orden.getFechaEntregaEstimada()).append("\"");
         //sb.append(System.lineSeparator());
         
         
@@ -98,34 +98,42 @@ public class LeerCSV {
             System.out.println("Ocurrió un error al escribir en el archivo CSV.");
             e.printStackTrace();
         }
-    }
-    
-   
+    }    
     
     public void eliminarLinea(String rutaArchivo, String nombreEliminar) {
         File archivoCSV = new File(rutaArchivo);
         List<String> lineasRestantes = new ArrayList<>();
 
-        // Leer el archivo y almacenar las líneas que no queremos eliminar
+            // Leer el archivo y almacenar las líneas que no queremos eliminar
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] campos = linea.split(",");  // Dividir por comas
-                if (!campos[0].trim().equals(nombreEliminar)) {  // El segundo campo es el rut
-                    lineasRestantes.add(linea);  // Si no es el rut que queremos eliminar, la mantenemos
+
+                // Verificar si la línea tiene suficientes campos
+                if (campos.length > 1) {  // Asegurarte de que la línea tiene al menos dos campos
+                    // Compara el nombre a eliminar, usando trim para evitar problemas de espacios
+                    if (!campos[0].trim().equalsIgnoreCase(nombreEliminar.trim())) {
+                        lineasRestantes.add(linea);  // Si no es el nombre que queremos eliminar, la mantenemos
+                    }
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error al leer el archivo: " + e.getMessage());
         }
 
         // Sobrescribir el archivo con las líneas que no fueron eliminadas
-        try (PrintWriter pw = new PrintWriter(new FileWriter(archivoCSV))) {
-            for (String linea : lineasRestantes) {
-                pw.println(linea);
+        if (!lineasRestantes.isEmpty()) {
+            try (PrintWriter pw = new PrintWriter(new FileWriter(archivoCSV))) {
+                for (String linea : lineasRestantes) {
+                    pw.println(linea);
+                }
+                System.out.println("Archivo sobrescrito exitosamente.");
+            } catch (IOException e) {
+                System.out.println("Error al escribir en el archivo: " + e.getMessage());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            System.out.println("No hay líneas restantes para escribir.");
         }
     }
 }
