@@ -15,23 +15,25 @@ public class LeerCSV {
 
     public String CrearArchivoNuevo() {
         String nombreArchivo = "archivo.csv";
+        String rutaTemporal;
 
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter(nombreArchivo))) {
-            escritor.write(contenido);
             System.out.println("Archivo creado exitosamente.");
             nombreArchivo = "archivo.csv";
+            rutaTemporal = "./archivo.csv";
         } catch (IOException e) {
             System.err.println("Error al crear el archivo: " + e.getMessage());
             nombreArchivo = null;
+            rutaTemporal = null;
         }
-        return nombreArchivo;
+        return rutaTemporal;
     }
 
     public void eliminarOrden(String nombreEliminar) {
         //funcion que cree el documento
         String rutaTemporal = CrearArchivoNuevo();
         if(rutaTemporal == null){
-            //Error
+            System.out.println("Archivo no encontrado!!");
         }
         
         // Ruta relativa al archivo CSV desde el directorio raíz del proyecto
@@ -64,11 +66,86 @@ public class LeerCSV {
                     agregarDatosCsvTemporal(rutaTemporal, orden);
                 }
             }
-            //eliminar el csv original
             
-            // el temporal dejarlo en la ruta original
+            //eliminar el csv original
+            eliminarArchivo(rutaRelativa);
+            
+            //renombrar archivo temporal y pasa a ser og
+            renombrar(rutaTemporal, rutaRelativa);
         } catch (FileNotFoundException e) {
             System.out.println("Archivo no encontrado: " + e.getMessage());
+        }
+    }
+    
+       // Método para eliminar un archivo CSV
+    public void eliminarArchivo(String rutaArchivo) {
+            File archivo = new File(rutaArchivo);
+            if (archivo.exists()) {
+                if (archivo.delete()) {
+                    System.out.println("El archivo ha sido eliminado exitosamente.");
+                } else {
+                    System.out.println("No se pudo eliminar el archivo.");
+                }
+            } else {
+                System.out.println("El archivo no existe.");
+            }
+        }
+    
+    public void renombrar(String rutaActual, String rutaTemporal){
+        // Archivo original
+        File archivoOriginal = new File(rutaActual);
+        
+        // Archivo con el nuevo nombre
+        File archivoNuevo = new File(rutaTemporal);
+
+        // Verificamos si el archivo original existe
+        if (archivoOriginal.exists()) {
+            // Intentamos renombrar el archivo
+            if (archivoOriginal.renameTo(archivoNuevo)) {
+                System.out.println("El archivo ha sido renombrado exitosamente.");
+            } else {
+                System.out.println("No se pudo cambiar el nombre del archivo.");
+            }
+        } else {
+            System.out.println("El archivo original no existe.");
+        }
+    }
+
+    
+    
+    //método para renombrar el archivo
+    public void renombrarArchivo(String rutaActual, String nuevoNombre) {
+            File archivoActual = new File(rutaActual);
+            File archivoNuevo = new File(archivoActual.getParent(), nuevoNombre);
+
+            if (archivoActual.exists()) {
+                if (archivoNuevo.exists()) {
+                    archivoNuevo.delete(); // Elimina si ya existe
+                }
+                if (archivoActual.renameTo(archivoNuevo)) {
+                    System.out.println("El archivo ha sido renombrado exitosamente.");
+                } else {
+                    System.out.println("No se pudo renombrar el archivo.");
+                }
+            } else {
+                System.out.println("El archivo no existe.");
+            }
+        }
+
+    
+    //Método para cambiar la ruta del archivo
+    public void moverArchivo(String rutaActual, String nuevaRuta) {
+        File archivoActual = new File(rutaActual);
+        File archivoNuevo = new File(nuevaRuta);
+
+        if (archivoActual.exists()) {
+            if (archivoActual.renameTo(archivoNuevo)) {
+                System.out.println("El archivo ha sido movido exitosamente.");
+            } else {
+                System.out.println("No se pudo mover el archivo.");
+            }
+        } else {
+            System.out.println("El archivo no existe.");
         }
     }
     
