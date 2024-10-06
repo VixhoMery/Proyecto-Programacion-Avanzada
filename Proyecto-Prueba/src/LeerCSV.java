@@ -11,9 +11,95 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class LeerCSV {
 
+    public String CrearArchivoNuevo() {
+        String nombreArchivo = "archivo.csv";
+
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            escritor.write(contenido);
+            System.out.println("Archivo creado exitosamente.");
+            nombreArchivo = "archivo.csv";
+        } catch (IOException e) {
+            System.err.println("Error al crear el archivo: " + e.getMessage());
+            nombreArchivo = null;
+        }
+        return nombreArchivo;
+    }
+
+    public void eliminarOrden(String nombreEliminar) {
+        //funcion que cree el documento
+        String rutaTemporal = CrearArchivoNuevo();
+        if(rutaTemporal == null){
+            //Error
+        }
+        
+        // Ruta relativa al archivo CSV desde el directorio raíz del proyecto
+        String rutaRelativa = "./datosClientes.csv";
+
+        try (Scanner scanner = new Scanner(new File(rutaRelativa))) {
+
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine();
+
+                // Reemplazar comillas y dividir la línea en campos
+                String[] campos = linea.replace("\"", "").split(",");
+
+                Persona cliente = new Persona();
+                OrdenDeTrabajo orden = new OrdenDeTrabajo();
+                Diagnosticar diag = new Diagnosticar();
+
+                cliente.setNombre(campos[0]);
+                cliente.setRut(campos[1]);
+                cliente.setCorreo(campos[2]);
+                cliente.setDireccion(campos[3]);
+                cliente.setTelefono(campos[4]);
+
+                orden.setCliente(cliente);
+                orden.setDiagnostico(campos[5]);
+
+                orden.setFechaEntregaEstimada(diag.calcularFecha(campos[5]));
+
+                if(!campos[0].equals(nombreEliminar)){
+                    agregarDatosCsvTemporal(rutaTemporal, orden);
+                }
+            }
+            //eliminar el csv original
+            
+            // el temporal dejarlo en la ruta original
+        } catch (FileNotFoundException e) {
+            System.out.println("Archivo no encontrado: " + e.getMessage());
+        }
+    }
+    
+    public void agregarDatosCsvTemporal(String archivo, OrdenDeTrabajo orden) {
+
+        try (FileWriter fw = new FileWriter(archivo, true); // true habilita el modo "append"
+                 BufferedWriter bw = new BufferedWriter(fw); PrintWriter pw = new PrintWriter(bw);) {
+            // Construir la línea CSV con los getters y agregar comillas dobles
+            StringBuilder sb = new StringBuilder();
+            sb.append(System.lineSeparator());
+            sb.append("\"").append(orden.getCliente().getNombre()).append("\",");
+            sb.append("\"").append(orden.getCliente().getRut()).append("\",");
+            sb.append("\"").append(orden.getCliente().getDireccion()).append("\",");
+            sb.append("\"").append(orden.getCliente().getCorreo()).append("\",");
+            sb.append("\"").append(orden.getCliente().getTelefono()).append("\",");
+            //sb.append("\"").append(orden.getProblema()).append("\",");
+            sb.append("\"").append(orden.getDiagnostico()).append("\",");
+            //sb.append("\"").append(orden.getFechaRecepcion()).append("\",");
+            //sb.append("\"").append(orden.getFechaEntregaEstimada()).append("\"");
+            //sb.append(System.lineSeparator());
+
+            // Escribir la línea en el archivo CSV
+            pw.print(sb.toString());
+            System.out.println("Datos agregados correctamente al archivo CSV.");
+
+        } catch (IOException e) {
+            System.out.println("Ocurrió un error al escribir en el archivo CSV.");
+            e.printStackTrace();
+        }
+    }
+    
     public void leerArchivo(MapaDiagnostico mapa) {
         // Ruta relativa al archivo CSV desde el directorio raíz del proyecto
         String rutaRelativa = "./datosClientes.csv";
@@ -22,11 +108,10 @@ public class LeerCSV {
 
             while (scanner.hasNextLine()) {
                 String linea = scanner.nextLine();
-                
+
                 // Reemplazar comillas y dividir la línea en campos
                 String[] campos = linea.replace("\"", "").split(",");
-                
-                
+
                 Persona cliente = new Persona();
                 OrdenDeTrabajo orden = new OrdenDeTrabajo();
                 Diagnosticar diag = new Diagnosticar();
@@ -60,51 +145,46 @@ public class LeerCSV {
         }
     }
 
-    public void mostrarMapa(MapaDiagnostico mapa){
+    public void mostrarMapa(MapaDiagnostico mapa) {
         String diag = "Reparación de teclado";
         ListaOrdenes lista = new ListaOrdenes();
         lista = mapa.objeto(diag);
         lista.mostrar();
     }
-    
-    
+
     public void agregarDatosCsv(String archivo, OrdenDeTrabajo orden) {
-        
-    try(FileWriter fw = new FileWriter(archivo, true);  // true habilita el modo "append"
-        BufferedWriter bw = new BufferedWriter(fw);
-        PrintWriter pw = new PrintWriter(bw);  )
-         
-    {
-        // Construir la línea CSV con los getters y agregar comillas dobles
-        StringBuilder sb = new StringBuilder();
-        sb.append(System.lineSeparator());
-        sb.append("\"").append(orden.getCliente().getNombre()).append("\",");
-        sb.append("\"").append(orden.getCliente().getRut()).append("\",");
-        sb.append("\"").append(orden.getCliente().getDireccion()).append("\",");
-        sb.append("\"").append(orden.getCliente().getCorreo()).append("\",");
-        sb.append("\"").append(orden.getCliente().getTelefono()).append("\",");
-        //sb.append("\"").append(orden.getProblema()).append("\",");
-        sb.append("\"").append(orden.getDiagnostico()).append("\",");
-        //sb.append("\"").append(orden.getFechaRecepcion()).append("\",");
-        //sb.append("\"").append(orden.getFechaEntregaEstimada()).append("\"");
-        //sb.append(System.lineSeparator());
-        
-        
-        // Escribir la línea en el archivo CSV
-        pw.print(sb.toString());
-        System.out.println("Datos agregados correctamente al archivo CSV.");
-            
+
+        try (FileWriter fw = new FileWriter(archivo, true); // true habilita el modo "append"
+                 BufferedWriter bw = new BufferedWriter(fw); PrintWriter pw = new PrintWriter(bw);) {
+            // Construir la línea CSV con los getters y agregar comillas dobles
+            StringBuilder sb = new StringBuilder();
+            sb.append(System.lineSeparator());
+            sb.append("\"").append(orden.getCliente().getNombre()).append("\",");
+            sb.append("\"").append(orden.getCliente().getRut()).append("\",");
+            sb.append("\"").append(orden.getCliente().getDireccion()).append("\",");
+            sb.append("\"").append(orden.getCliente().getCorreo()).append("\",");
+            sb.append("\"").append(orden.getCliente().getTelefono()).append("\",");
+            //sb.append("\"").append(orden.getProblema()).append("\",");
+            sb.append("\"").append(orden.getDiagnostico()).append("\",");
+            //sb.append("\"").append(orden.getFechaRecepcion()).append("\",");
+            //sb.append("\"").append(orden.getFechaEntregaEstimada()).append("\"");
+            //sb.append(System.lineSeparator());
+
+            // Escribir la línea en el archivo CSV
+            pw.print(sb.toString());
+            System.out.println("Datos agregados correctamente al archivo CSV.");
+
         } catch (IOException e) {
             System.out.println("Ocurrió un error al escribir en el archivo CSV.");
             e.printStackTrace();
         }
-    }    
-    
+    }
+
     public void eliminarLinea(String rutaArchivo, String nombreEliminar) {
         File archivoCSV = new File(rutaArchivo);
         List<String> lineasRestantes = new ArrayList<>();
 
-            // Leer el archivo y almacenar las líneas que no queremos eliminar
+        // Leer el archivo y almacenar las líneas que no queremos eliminar
         try (BufferedReader br = new BufferedReader(new FileReader(archivoCSV))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -137,6 +217,3 @@ public class LeerCSV {
         }
     }
 }
-
-
-    

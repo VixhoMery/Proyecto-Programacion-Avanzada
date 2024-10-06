@@ -13,7 +13,7 @@ public class ListaOrdenes {
     }
     
     public void mostrar(){
-        OrdenDeTrabajo orden = ordenes.getFirst();
+        OrdenDeTrabajo orden = ordenes.get(0);
         System.out.println("Cliente: "+orden.getCliente().getNombre());
     }
     

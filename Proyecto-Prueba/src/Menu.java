@@ -42,6 +42,10 @@ public class Menu {
                     esperarEnterParaVolverAlMenu();  // Esperar antes de volver al menú
                 }
                 case 5 -> System.out.println("Adios!!!");  // Mensaje de despedida
+                
+                case 6 ->{
+                    csv.eliminarOrden("Pía Soto");
+                } 
                 default -> System.out.println("Opción no válida. Intente de nuevo.");
             }
         } while (opcion != 5);  // El bucle se repite hasta que la opción sea 5 (salir)
