@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -161,11 +160,8 @@ public class LeerCSV {
             sb.append("\"").append(orden.getCliente().getDireccion()).append("\",");
             sb.append("\"").append(orden.getCliente().getCorreo()).append("\",");
             sb.append("\"").append(orden.getCliente().getTelefono()).append("\",");
-            //sb.append("\"").append(orden.getProblema()).append("\",");
             sb.append("\"").append(orden.getDiagnostico()).append("\",");
-            //sb.append("\"").append(orden.getFechaRecepcion()).append("\",");
-            //sb.append("\"").append(orden.getFechaEntregaEstimada()).append("\"");
-            //sb.append(System.lineSeparator());
+            
 
             // Escribir la línea en el archivo CSV
             pw.print(sb.toString());
@@ -231,11 +227,8 @@ public class LeerCSV {
             sb.append("\"").append(orden.getCliente().getDireccion()).append("\",");
             sb.append("\"").append(orden.getCliente().getCorreo()).append("\",");
             sb.append("\"").append(orden.getCliente().getTelefono()).append("\",");
-            //sb.append("\"").append(orden.getProblema()).append("\",");
             sb.append("\"").append(orden.getDiagnostico()).append("\",");
-            //sb.append("\"").append(orden.getFechaRecepcion()).append("\",");
-            //sb.append("\"").append(orden.getFechaEntregaEstimada()).append("\"");
-            //sb.append(System.lineSeparator());
+            
 
             // Escribir la línea en el archivo CSV
             pw.print(sb.toString());
@@ -283,3 +276,5 @@ public class LeerCSV {
         }
     }
 }
+
+    

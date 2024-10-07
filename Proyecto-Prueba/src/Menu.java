@@ -1,3 +1,4 @@
+import IGU.Pantalla;
 import java.util.Scanner;
 
 public class Menu {
@@ -11,6 +12,10 @@ public class Menu {
         String rutaCSV = "./datosClientes.csv";
         GestionarClientes gestionCliente = new GestionarClientes();
         csv.leerArchivo(mapa);
+        
+        Pantalla panta = new Pantalla();
+        panta.setVisible(true);
+        
         
         int opcion;
 

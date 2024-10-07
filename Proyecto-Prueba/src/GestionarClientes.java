@@ -39,31 +39,7 @@ public class GestionarClientes {
         
         csv.agregarDatosCsv(rutaCSV,orden);
     }
-    /*
-    public void buscar(MapaDiagnostico mapa){
-        System.out.println("Ingresar Diagnóstico: ");
-        String diagnostico = leerDato.nextLine();
-        if(!mapa.estaClave(diagnostico)){
-            System.out.println("Diagnostico no encontrado."); //después hacer con try-catch
-        }
-        
-        else{
-            System.out.println("Ingrese el nombre del cliente con formato ^Nombre Apellido^: ");
-            String nombre = leerDato.nextLine();
-            ListaOrdenes lista = mapa.objeto(diagnostico);
-            //lista.mostrarLista();
-           
-            for(int i = 0; i < lista.largo();i++){
-                if(lista.nombresIguales(nombre, i)){
-                    System.out.println("El cliente y su orden de trabajo han sido eliminados exitosamente!!");
-                    break;
-                }
-            }
-            System.out.println(" ");
-            lista.mostrarLista();
-        }
-    }    
-    */
+  
     public OrdenDeTrabajo buscar(MapaDiagnostico mapa){
         System.out.println("Ingresar Diagnóstico: ");
         String diagnostico = leerDato.nextLine();
