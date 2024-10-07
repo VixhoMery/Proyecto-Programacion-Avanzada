@@ -9,7 +9,6 @@ public class Menu {
         MostrarMenu menus = new MostrarMenu();
         LeerCSV csv = new LeerCSV();
         String rutaCSV = "./datosClientes.csv";
-        VerStock verStock = new VerStock(); // Instancia de VerStock
         GestionarClientes gestionCliente = new GestionarClientes();
         csv.leerArchivo(mapa);
         
