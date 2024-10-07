@@ -9,5 +9,4 @@ public class MostrarMenu {
         System.out.println("4) Mostrar Lista de Diagnostico Específico");
         System.out.println("5) Salir del programa\n");
     }
-    
 }

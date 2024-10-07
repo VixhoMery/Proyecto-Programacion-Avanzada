@@ -51,14 +51,15 @@ public class Menu {
                     int opcionEditar = leerDato.nextInt();
                     leerDato.nextLine();//consumir el enter
                     switch(opcionEditar){
-                        case 1 -> {gestionCliente.editarDato(0,mapa,ordenActual);}
-                        case 2 -> {gestionCliente.editarDato(1,mapa,ordenActual);}
-                        case 3 -> {gestionCliente.editarDato(2,mapa,ordenActual);}
-                        case 4 -> {gestionCliente.editarDato(3,mapa,ordenActual);}
-                        case 5 -> {gestionCliente.editarDato(4,mapa,ordenActual);}
-                        case 6 -> {gestionCliente.editarDato(5,mapa,ordenActual);}
+                        case 1 -> {gestionCliente.editarDato(1,mapa,ordenActual);}
+                        case 2 -> {gestionCliente.editarDato(2,mapa,ordenActual);}
+                        case 3 -> {gestionCliente.editarDato(3,mapa,ordenActual);}
+                        case 4 -> {gestionCliente.editarDato(4,mapa,ordenActual);}
+                        case 5 -> {gestionCliente.editarDato(5,mapa,ordenActual);}
+                        case 6 -> {gestionCliente.editarDato(6,mapa,ordenActual);}
                         default -> {System.out.println("Opción no válida!!");}
                     }
+                    
                     esperarEnterParaVolverAlMenu();
                 }
                 case 4 -> {
@@ -66,22 +67,16 @@ public class Menu {
                     String diag = leerDato.nextLine();
                     ListaOrdenes lista = mapa.objeto(diag);
                     lista.mostrarLista();
+                    esperarEnterParaVolverAlMenu();
                 }
                 
                 case 5 -> {
-                    verStock.verStock();  // Llamar al método verStock
-                    esperarEnterParaVolverAlMenu();  // Esperar antes de volver al menú
+                        System.out.println("Adios!!!");  // Mensaje de despedida
                 }
-                
-                case 6 ->{
-                    
-                } 
-                
-                case 7 -> System.out.println("Adios!!!");  // Mensaje de despedida
                 
                 default -> System.out.println("Opción no válida. Intente de nuevo.");
             }
-        } while (opcion != 7);  // El bucle se repite hasta que la opción sea 5 (salir)
+        } while (opcion != 6);  // El bucle se repite hasta que la opción sea 5 (salir)
     }
 
     // Método para esperar que el usuario presione Enter antes de volver al menú

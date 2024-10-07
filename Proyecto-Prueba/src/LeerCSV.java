@@ -205,16 +205,6 @@ public class LeerCSV {
                 // Calcular diagnóstico y fecha estimada
                 diag.organizar(orden, mapa, orden.getDiagnostico());
                 orden.setFechaEntregaEstimada(diag.calcularFecha(campos[5]));
-
-                // Imprimir los datos
-                System.out.println(cliente.getNombre());
-                System.out.println(cliente.getRut());
-                System.out.println(cliente.getCorreo());
-                System.out.println(cliente.getDireccion());
-                System.out.println(cliente.getTelefono());
-                System.out.println(orden.getDiagnostico());
-                System.out.println(orden.getFechaEntregaEstimada());
-                System.out.println(" ");
             }
 
         } catch (FileNotFoundException e) {
@@ -249,7 +239,6 @@ public class LeerCSV {
 
             // Escribir la línea en el archivo CSV
             pw.print(sb.toString());
-            System.out.println("Datos agregados correctamente al archivo CSV.");
 
         } catch (IOException e) {
             System.out.println("Ocurrió un error al escribir en el archivo CSV.");

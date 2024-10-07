@@ -98,7 +98,6 @@ public class GestionarClientes {
             System.out.println("Ingrese el nombre del cliente con formato ^Nombre Apellido^: ");
             String nombre = leerDato.nextLine();
             ListaOrdenes lista = mapa.objeto(diagnostico);
-            lista.mostrarLista();
             
             for(int i = 0; i < lista.largo();i++){
                 if(lista.nombresIguales(nombre, i)){
@@ -109,7 +108,6 @@ public class GestionarClientes {
                 }
             }
             System.out.println(" ");
-            lista.mostrarLista();
         }
     }
     
@@ -128,6 +126,7 @@ public class GestionarClientes {
                 System.out.println("Ingrese Nuevo Dato: ");
                 datoIngresado = leerDato.nextLine();
                 p.setNombre(datoIngresado);
+                System.out.println("Datos modificados exitosamente");
             }
             else {return;} 
         }
@@ -143,6 +142,7 @@ public class GestionarClientes {
                 System.out.println("Ingrese Nuevo Dato: ");
                 datoIngresado = leerDato.nextLine();
                 p.setRut(datoIngresado);
+                System.out.println("Datos modificados exitosamente");
             }
             else {return;}  
         }
@@ -158,6 +158,7 @@ public class GestionarClientes {
                 System.out.println("Ingrese Nuevo Dato: ");
                 datoIngresado = leerDato.nextLine();
                 p.setCorreo(datoIngresado);
+                System.out.println("Datos modificados exitosamente");
             } else {
                 return;
             }
@@ -175,6 +176,7 @@ public class GestionarClientes {
                 System.out.println("Ingrese Nuevo Dato: ");
                 datoIngresado = leerDato.nextLine();
                 p.setDireccion(datoIngresado);
+                System.out.println("Datos modificados exitosamente");
             } else {
                 return;
             }
@@ -192,6 +194,7 @@ public class GestionarClientes {
                 System.out.println("Ingrese Nuevo Dato: ");
                 datoIngresado = leerDato.nextLine();
                 p.setTelefono(datoIngresado);
+                System.out.println("Datos modificados exitosamente");
             } else {
                 return;
             }
@@ -208,6 +211,7 @@ public class GestionarClientes {
                 datoIngresado = leerDato.nextLine();
                 orden.setDiagnostico(datoIngresado);
                 d.organizar(orden, mapa, datoIngresado);
+                System.out.println("Datos modificados exitosamente");
             } else {
                 return;
             }
